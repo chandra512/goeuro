@@ -14,7 +14,7 @@ public class GoEuroLocation {
 
     private String name;
 
-    private GeoPosition geo_position;
+    private GoEuroGeoPosition geo_position;
 
     private String type;
 
@@ -26,11 +26,11 @@ public class GoEuroLocation {
         this.type = type;
     }
 
-    public GeoPosition getGeo_position() {
+    public GoEuroGeoPosition getGeo_position() {
         return geo_position;
     }
 
-    public void setGeo_position(GeoPosition geo_position) {
+    public void setGeo_position(GoEuroGeoPosition geo_position) {
         this.geo_position = geo_position;
     }
 

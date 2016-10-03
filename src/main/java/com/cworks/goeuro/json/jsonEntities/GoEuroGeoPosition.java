@@ -3,15 +3,25 @@ package com.cworks.goeuro.json.jsonEntities;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
- * This is GeoPosition
+ * This is GoEuroGeoPosition
  * Created by chandra on 02-10-2016.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GeoPosition {
+public class GoEuroGeoPosition {
 
     private String latitude;
 
     private String longitude;
+
+    public GoEuroGeoPosition(String latitude, String longitude) {
+        super();
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public GoEuroGeoPosition() {
+
+    }
 
     public String getLatitude() {
         return latitude;

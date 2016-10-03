@@ -16,7 +16,7 @@ public class GoEuroFileService {
 
 
 
-    public static final String STR = "\"";
+    private static final String STR = "\"";
     private static final String FOLDER = "/goeuro/";
     private static final String FOLDER_SEPERATOR = "/";
     private static final String CSV = ".csv";
@@ -29,8 +29,10 @@ public class GoEuroFileService {
      * @param file          File
      * @param locationArray DetailedLocation
      */
-    public void writeToCSV(File file, GoEuroLocation[] locationArray) {
+    public boolean writeToCSV(File file, GoEuroLocation[] locationArray) {
+        boolean returnVal = false;
         try {
+
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
             bw.write(StringUtils.join(CSV_HEADER, CSV_SEPARATOR));
             bw.newLine();
@@ -61,10 +63,12 @@ public class GoEuroFileService {
             bw.flush();
             bw.close();
             System.out.println("File created SuccessFully,Location:" + file.getPath());
+            returnVal = true;
         } catch (UnsupportedEncodingException e) {
         } catch (FileNotFoundException e) {
         } catch (IOException e) {
         }
+        return returnVal;
     }
 
     /**

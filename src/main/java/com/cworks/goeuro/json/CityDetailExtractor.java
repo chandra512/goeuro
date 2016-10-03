@@ -28,15 +28,17 @@ public class CityDetailExtractor {
     @Autowired
     private GoEuroFileService goEuroFileService;
 
-    public void extractCityDetails(final String cityName) {
+    public boolean extractCityDetails(final String cityName) {
+        boolean returnVal = false;
         try {
             Map<String, String> map = new HashMap();
             map.put(CITY_NAME, cityName);
             ResponseEntity<GoEuroLocation[]> val = this.restTemplate.getForEntity(URL_PREFIX + cityName, GoEuroLocation[].class, map);
-            File file = goEuroFileService.createFile(cityName);
-            goEuroFileService.writeToCSV(file, val.getBody());
+            File file = this.goEuroFileService.createFile(cityName);
+            returnVal = this.goEuroFileService.writeToCSV(file, val.getBody());
         } catch (Exception e) {
             System.out.println(" Exception while creating file " + cityName);
         }
+        return returnVal;
     }
 }
